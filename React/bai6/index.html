@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel" >
+        const rootElement = document.getElementById("root");
+        function PostItem(props){
+            console.log(props);
+            return (
+                <div className="post-item">
+                    <img src = {props.image} />
+                    <h2 className = "title">{props.title}</h2>
+                </div>
+            )
+        }
+        function App(){
+            return (
+                <div id="wrapper">
+                    <PostItem 
+                        title = "Hello anh em"
+                        image = "https://1.bp.blogspot.com/-hN0NCoAmEDY/X8z1OcRjXmI/AAAAAAAAlc0/hHqbHzqOPhIABiVomzpYacPeEufV816QQCNcBGAsYHQ/w350-h265-p-k-no-nu/hinh-nen-may-cuc-dep.jpg"/>
+                    <PostItem 
+                        title = "Xin chào anh em"/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>, rootElement)
+    </script>
+</body>
+</html>

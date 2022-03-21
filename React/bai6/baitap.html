@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel" >
+        // Children prop
+        //  -<Your Component>String literals</Your Component>
+        //  -<Your Component>{expression}</Your Component>
+        const rootElement = document.querySelector("#root");
+        function Button({title, primary, children}){
+            return (
+                <button>{children}</button>
+            )
+        }
+        function Input({ label, ...inputProps }){
+            return (
+                <div>
+                    <label>{label}</label>
+                    <input {...inputProps} />
+                </div>
+            )
+        }
+        function App(){
+            const title = "Xin chào anh em"
+            return (
+                <div id = "wrapper">
+                    <Button>Hello anh em</Button>
+                    <Input label = "Full name" 
+                           placeholder ="Họ và tên" />
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>, rootElement);
+    </script>
+</body>
+</html>
