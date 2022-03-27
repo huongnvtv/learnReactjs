@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import {useState} from 'react'
 import './App.css';
 
+const courses = [
+  {
+    id : 1,
+    name : "java"
+  },
+  {
+    id : 2,
+    name : "javascript"
+  },
+  {
+    id : 3,
+    name : "C++"
+  }
+]
 function App() {
+  const [checked, setChecked] = useState([]);
+  console.log(checked);
+  const handleSubmit = () => {
+
+  }
+  const handleCheck = (id) => {
+      setChecked(prev => {
+        const isChecked = checked.includes(id);
+        if(isChecked){
+            return checked.filter(item => item != id)
+        }else{
+          return [...prev,id]
+        }
+      })
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {courses.map(course => (
+         <div key={course.id}>
+           <input type="checkbox" checked = {checked.includes(course.id)} onChange={() => handleCheck(course.id)}/> {course.name}
+         </div>
+       ))} 
+      <button onClick={handleSubmit}>Register</button>
     </div>
   );
 }
