@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './App.css';
+import Content from './Content';
 
 const courses = [
   {
@@ -31,6 +32,7 @@ function App() {
         }
       })
   }
+  const [checkToggle, setCheckToggle] = useState(false);
   return (
     <div className="App">
        {courses.map(course => (
@@ -39,6 +41,9 @@ function App() {
          </div>
        ))} 
       <button onClick={handleSubmit}>Register</button>
+      <br/>
+      <button onClick={() => setCheckToggle(!checkToggle)}>Toggle</button>
+      {checkToggle && <Content/>}
     </div>
   );
 }
